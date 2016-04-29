@@ -1,9 +1,15 @@
 import angular from 'angular';
+import 'angular-animate';
+import 'angular-aria';
+import 'angular-messages';
+import 'angular-material';
+
 import Firebase from 'firebase';
 
 import  'angular-route';
+import 'angularfire';
 
-var phonecatApp = angular.module('MilesEvent', ['ngRoute']);
+var phonecatApp = angular.module('Duit', ['ngRoute', 'firebase', 'ngMaterial']);
 
 phonecatApp.config(['$routeProvider', ($routeProvider) =>{
 	$routeProvider
@@ -20,20 +26,22 @@ phonecatApp.config(['$routeProvider', ($routeProvider) =>{
 		})	
 }])
 
-phonecatApp.controller('LoginController',  ($scope, $location) => {
-
-	$scope.firebaseRef = new Firebase('https://brilliant-heat-6714.firebaseio.com')
+phonecatApp.controller('LoginController',  ($scope, $location, $firebaseAuth) => {
 
 	$scope.facebookLogin = () =>{
 
-		$scope.firebaseRef.authWithOAuthPopup("facebook", (error, authData)=>{
-			if(error){
-				console.log("Facebook login failed", error)
-			}
-			else{
+		let firebaseRef = new Firebase('https://brilliant-heat-6714.firebaseio.com')
+
+		let auth = $firebaseAuth(firebaseRef)
+
+		auth.$authWithOAuthPopup("facebook")
+			.then((authData)=>{
+				console.log('Facebook login success:', authData)
 				$location.path('/buy-tickets')
-			}
-		})
+			})
+			.catch((error)=>{
+				console.log("Facebook login failed", error)
+			})
 	}
 });
 

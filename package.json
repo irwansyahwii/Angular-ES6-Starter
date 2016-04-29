@@ -6,7 +6,8 @@
   "scripts": {
     "test": "test",
     "watch": "cp src/index.html build/index.html && gulp watch",
-    "start": "http-server ./build -p $p"
+    "start": "http-server ./build -p $p",
+    "html": "cp src/index.html build/ && cp -r src/partials build/ && cp -r src/css build/"
   },
   "keywords": [
     "Miles",

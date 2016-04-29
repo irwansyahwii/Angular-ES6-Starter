@@ -1,1 +1,39 @@
-<button ng-click="facebookLogin()">Facebook Login</button>
+<md-content id="content"><md-card class="md-whiteframe-8dp"><div class="logo"><span layout="row" layout-align="center">D</span></div><div class="title"><span layout="row" layout-align="center">Log in to your account</span></div><form name="loginForm" novalidate="novalidate"><md-input-container class="md-block"><input type="email" ng-model="login.email" placeholder="Email"/></md-input-container><md-input-container class="md-block"><input type="password" ng-model="login.password" placeholder="Password"/></md-input-container><md-button ng-click="facebookLogin()" class="md-raised md-accent md-block">LOG IN</md-button></form></md-card></md-content><style>md-content{
+	background-image: url(images/march.jpg);
+	background-size: cover;
+	height:100%;
+}
+.logo {
+	background-color: rgb(0, 150, 136);
+	width: 128px;
+	height: 128px;
+	line-height: 128px;
+	font-size: 86px;
+	font-weight: 500;
+	margin: 32px auto;
+	color: #FFF;
+	border-radius: 2px;	
+}
+
+.md-whiteframe-8dp {
+    box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12);
+}	
+
+md-card{
+	margin:18px;
+}
+
+form{
+	margin:24px;
+}
+
+form .md-button{
+	width: 90%;
+	margin:16px auto;
+	display: block;
+}
+
+.title {
+    font-size: 17px;
+    /* margin: 16px 0 32px; */
+}	</style>
